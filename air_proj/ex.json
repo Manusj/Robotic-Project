@@ -1,0 +1,144 @@
+result: "{\n    \"__kdb\": {\n        \"error\": \"\",\n        \"query\": \"SELECT ?x ?y\
+  \ ?z WHERE { ?x ?y ?z }\",\n        \"success\": true\n    },\n    \"head\": {\n\
+  \        \"vars\": [\n            \"x\",\n            \"y\",\n            \"z\"\n\
+  \        ]\n    },\n    \"results\": {\n        \"bindings\": [\n            {\n\
+  \                \"x\": {\n                    \"type\": \"uri\",\n            \
+  \        \"value\": \"http://www.ida.liu.se/~TDDE051\"\n                },\n   \
+  \             \"y\": {\n                    \"type\": \"uri\",\n               \
+  \     \"value\": \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\"\n         \
+  \       },\n                \"z\": {\n                    \"type\": \"uri\",\n \
+  \                   \"value\": \"http://www.ida.liu.se/~TDDE05/classesHuman\"\n\
+  \                }\n            },\n            {\n                \"x\": {\n  \
+  \                  \"type\": \"bnode\",\n                    \"value\": \"0\"\n\
+  \                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/gisx\"\n\
+  \                },\n                \"z\": {\n                    \"datatype\"\
+  : \"http://www.w3.org/2001/XMLSchema#integer\",\n                    \"type\": \"\
+  literal\",\n                    \"value\": \"10\"\n                }\n         \
+  \   },\n            {\n                \"x\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"0\"\n                },\n           \
+  \     \"y\": {\n                    \"type\": \"uri\",\n                    \"value\"\
+  : \"http://www.ida.liu.se/~TDDE05/gisy\"\n                },\n                \"\
+  z\": {\n                    \"datatype\": \"http://www.w3.org/2001/XMLSchema#integer\"\
+  ,\n                    \"type\": \"literal\",\n                    \"value\": \"\
+  10\"\n                }\n            },\n            {\n                \"x\": {\n\
+  \                    \"type\": \"uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE051\"\
+  \n                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/propertieslocation\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"0\"\n                }\n            },\n\
+  \            {\n                \"x\": {\n                    \"type\": \"uri\"\
+  ,\n                    \"value\": \"http://www.ida.liu.se/~TDDE052\"\n         \
+  \       },\n                \"y\": {\n                    \"type\": \"uri\",\n \
+  \                   \"value\": \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/classesHuman\"\
+  \n                }\n            },\n            {\n                \"x\": {\n \
+  \                   \"type\": \"bnode\",\n                    \"value\": \"1\"\n\
+  \                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/gisx\"\n\
+  \                },\n                \"z\": {\n                    \"datatype\"\
+  : \"http://www.w3.org/2001/XMLSchema#integer\",\n                    \"type\": \"\
+  literal\",\n                    \"value\": \"10\"\n                }\n         \
+  \   },\n            {\n                \"x\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"1\"\n                },\n           \
+  \     \"y\": {\n                    \"type\": \"uri\",\n                    \"value\"\
+  : \"http://www.ida.liu.se/~TDDE05/gisy\"\n                },\n                \"\
+  z\": {\n                    \"datatype\": \"http://www.w3.org/2001/XMLSchema#integer\"\
+  ,\n                    \"type\": \"literal\",\n                    \"value\": \"\
+  12\"\n                }\n            },\n            {\n                \"x\": {\n\
+  \                    \"type\": \"uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE052\"\
+  \n                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/propertieslocation\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"1\"\n                }\n            },\n\
+  \            {\n                \"x\": {\n                    \"type\": \"bnode\"\
+  ,\n                    \"value\": \"2\"\n                },\n                \"\
+  y\": {\n                    \"type\": \"uri\",\n                    \"value\": \"\
+  http://www.ida.liu.se/~TDDE05/gisx\"\n                },\n                \"z\"\
+  : {\n                    \"datatype\": \"http://www.w3.org/2001/XMLSchema#integer\"\
+  ,\n                    \"type\": \"literal\",\n                    \"value\": \"\
+  10\"\n                }\n            },\n            {\n                \"x\": {\n\
+  \                    \"type\": \"bnode\",\n                    \"value\": \"2\"\n\
+  \                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/gisy\"\n\
+  \                },\n                \"z\": {\n                    \"datatype\"\
+  : \"http://www.w3.org/2001/XMLSchema#integer\",\n                    \"type\": \"\
+  literal\",\n                    \"value\": \"10\"\n                }\n         \
+  \   },\n            {\n                \"x\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE051\"\n    \
+  \            },\n                \"y\": {\n                    \"type\": \"uri\"\
+  ,\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/propertieslocation\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"2\"\n                }\n            },\n\
+  \            {\n                \"x\": {\n                    \"type\": \"bnode\"\
+  ,\n                    \"value\": \"3\"\n                },\n                \"\
+  y\": {\n                    \"type\": \"uri\",\n                    \"value\": \"\
+  http://www.ida.liu.se/~TDDE05/gisx\"\n                },\n                \"z\"\
+  : {\n                    \"datatype\": \"http://www.w3.org/2001/XMLSchema#integer\"\
+  ,\n                    \"type\": \"literal\",\n                    \"value\": \"\
+  10\"\n                }\n            },\n            {\n                \"x\": {\n\
+  \                    \"type\": \"bnode\",\n                    \"value\": \"3\"\n\
+  \                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/gisy\"\n\
+  \                },\n                \"z\": {\n                    \"datatype\"\
+  : \"http://www.w3.org/2001/XMLSchema#integer\",\n                    \"type\": \"\
+  literal\",\n                    \"value\": \"12\"\n                }\n         \
+  \   },\n            {\n                \"x\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE052\"\n    \
+  \            },\n                \"y\": {\n                    \"type\": \"uri\"\
+  ,\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/propertieslocation\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"3\"\n                }\n            },\n\
+  \            {\n                \"x\": {\n                    \"type\": \"uri\"\
+  ,\n                    \"value\": \"http://www.ida.liu.se/~TDDE051\"\n         \
+  \       },\n                \"y\": {\n                    \"type\": \"uri\",\n \
+  \                   \"value\": \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/classesTable\"\
+  \n                }\n            },\n            {\n                \"x\": {\n \
+  \                   \"type\": \"bnode\",\n                    \"value\": \"4\"\n\
+  \                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/gisx\"\n\
+  \                },\n                \"z\": {\n                    \"datatype\"\
+  : \"http://www.w3.org/2001/XMLSchema#integer\",\n                    \"type\": \"\
+  literal\",\n                    \"value\": \"0\"\n                }\n          \
+  \  },\n            {\n                \"x\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"4\"\n                },\n           \
+  \     \"y\": {\n                    \"type\": \"uri\",\n                    \"value\"\
+  : \"http://www.ida.liu.se/~TDDE05/gisy\"\n                },\n                \"\
+  z\": {\n                    \"datatype\": \"http://www.w3.org/2001/XMLSchema#integer\"\
+  ,\n                    \"type\": \"literal\",\n                    \"value\": \"\
+  0\"\n                }\n            },\n            {\n                \"x\": {\n\
+  \                    \"type\": \"uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE051\"\
+  \n                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/propertieslocation\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"4\"\n                }\n            },\n\
+  \            {\n                \"x\": {\n                    \"type\": \"uri\"\
+  ,\n                    \"value\": \"http://www.ida.liu.se/~TDDE052\"\n         \
+  \       },\n                \"y\": {\n                    \"type\": \"uri\",\n \
+  \                   \"value\": \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/classesTable\"\
+  \n                }\n            },\n            {\n                \"x\": {\n \
+  \                   \"type\": \"bnode\",\n                    \"value\": \"5\"\n\
+  \                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/gisx\"\n\
+  \                },\n                \"z\": {\n                    \"datatype\"\
+  : \"http://www.w3.org/2001/XMLSchema#integer\",\n                    \"type\": \"\
+  literal\",\n                    \"value\": \"-1\"\n                }\n         \
+  \   },\n            {\n                \"x\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"5\"\n                },\n           \
+  \     \"y\": {\n                    \"type\": \"uri\",\n                    \"value\"\
+  : \"http://www.ida.liu.se/~TDDE05/gisy\"\n                },\n                \"\
+  z\": {\n                    \"datatype\": \"http://www.w3.org/2001/XMLSchema#integer\"\
+  ,\n                    \"type\": \"literal\",\n                    \"value\": \"\
+  -1\"\n                }\n            },\n            {\n                \"x\": {\n\
+  \                    \"type\": \"uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE052\"\
+  \n                },\n                \"y\": {\n                    \"type\": \"\
+  uri\",\n                    \"value\": \"http://www.ida.liu.se/~TDDE05/propertieslocation\"\
+  \n                },\n                \"z\": {\n                    \"type\": \"\
+  bnode\",\n                    \"value\": \"5\"\n                }\n            }\n\
+  \        ]\n    }\n}\n"
+success: True

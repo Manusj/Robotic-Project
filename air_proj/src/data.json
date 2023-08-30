@@ -1,0 +1,21 @@
+{
+    "children": [
+        {
+            "children": [],
+            "common_params": {},
+            "name": "drive-to",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": -1.9999951200491441,
+                    "y": 1.9999906821993685,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        }
+    ],
+    "common_params": {},
+    "name": "seq",
+    "params": {}
+}

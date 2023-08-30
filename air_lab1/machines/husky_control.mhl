@@ -1,0 +1,1840 @@
+project
+  activity_prototypes_libraries ../modules/air_lab1.mal control.mal debugger.mal debugger_networking.mal eigen3_geometry.mal list.mal math.mal ros.mal ros_geometry_msgs_tools.mal ros_nav_msgs_tools.mal ros_sensor_msgs_tools.mal std_lib.mal
+  machine
+    super_state
+      timeout 0
+      title husky_control
+      id 0
+      geometry 84.8239 30 4256.63 1272
+      minimum_size 80 40
+      group
+        title velocity control
+        id 1
+        geometry 3038.47 409 1208.16 473
+        minimum_size 100 80
+        processing_state
+          timeout 0
+          title controller
+          id 2
+          geometry 10 30 1188.16 283
+          minimum_size 80 40
+          processing_graph
+            title untitled
+            id 3
+            geometry 0 0 1188.16 283
+            minimum_size 80 40
+            processing_node
+              title joint state msg
+              id 408
+              geometry 1045.41 111 132.75 96
+              minimum_size 80 96
+              library ros_sensor_msgs_tools
+              description joint_state_assemble
+              mode direct
+              input_connector
+                name header
+                queue_size 1
+              end
+              input_connector
+                name name
+                queue_size 1
+              end
+              input_connector
+                name position
+                queue_size 1
+              end
+              input_connector
+                name velocity
+                queue_size 1
+              end
+              input_connector
+                name effort
+                queue_size 1
+              end
+            end
+            processing_node
+              title append
+              id 680
+              geometry 915.341 30 80.6719 42
+              minimum_size 80 42
+              library march_list
+              description list_append
+              mode direct
+              input_connector
+                name list
+                queue_size 1
+              end
+              input_connector
+                name value
+                queue_size 1
+              end
+            end
+            processing_node
+              title append
+              id 681
+              geometry 783.341 35 80.6719 42
+              minimum_size 80 42
+              library march_list
+              description list_append
+              mode direct
+              input_connector
+                name list
+                queue_size 1
+              end
+              input_connector
+                name value
+                queue_size 1
+              end
+            end
+            processing_node
+              title left
+              id 684
+              geometry 647.341 71 80 40
+              minimum_size 80 40
+              library march_std_lib
+              description output_string
+              mode direct
+              parameters
+                value left
+              end
+              parameter_references
+              end
+            end
+            processing_node
+              title right
+              id 688
+              geometry 784.341 94 80 40
+              minimum_size 80 40
+              library march_std_lib
+              description output_string
+              mode direct
+              parameters
+                value right
+              end
+              parameter_references
+              end
+            end
+            processing_node
+              title append left effort
+              id 690
+              geometry 599.341 145 151.234 42
+              minimum_size 80 42
+              library march_list
+              description list_append
+              mode direct
+              input_connector
+                name list
+                queue_size 1
+              end
+              input_connector
+                name value
+                queue_size 1
+              end
+            end
+            processing_node
+              title append right effort
+              id 691
+              geometry 825.341 231 161.438 42
+              minimum_size 80 42
+              library march_list
+              description list_append
+              mode direct
+              input_connector
+                name list
+                queue_size 1
+              end
+              input_connector
+                name value
+                queue_size 1
+              end
+            end
+            processing_node
+              title Right PID
+              id 916
+              geometry 447 159 92.5781 114
+              minimum_size 80 114
+              library march_control
+              description pid
+              mode direct
+              input_connector
+                name control
+                queue_size 1
+              end
+              input_connector
+                name observation
+                queue_size 1
+              end
+              input_connector
+                name current_time
+                queue_size 1
+              end
+              input_connector
+                name initial_previous_time
+                queue_size 1
+              end
+              input_connector
+                name __shadow_input_4
+                queue_size 1
+              end
+              input_connector
+                name __shadow_input_5
+                queue_size 1
+              end
+              parameters
+              end
+              parameter_references
+                Kp Kp
+                Ki Ki
+                Kd Kd
+              end
+            end
+            processing_node
+              title angular to lin. vel
+              id 917
+              geometry 10 209 150.547 42
+              minimum_size 80 42
+              library air_lab1_march
+              description linear_angular_to_left_right_velocities
+              mode direct
+              input_connector
+                name linear_velocity
+                queue_size 1
+              end
+              input_connector
+                name angular_velocity
+                queue_size 1
+              end
+              parameters
+              end
+              parameter_references
+              end
+            end
+            processing_node
+              title time
+              id 918
+              geometry 105.706 67 80 60
+              minimum_size 80 60
+              library march_ros
+              description current_time
+              mode direct
+            end
+            processing_node
+              title Left PID
+              id 919
+              geometry 444.412 30 82.0781 114
+              minimum_size 80 114
+              library march_control
+              description pid
+              mode direct
+              input_connector
+                name control
+                queue_size 1
+              end
+              input_connector
+                name observation
+                queue_size 1
+              end
+              input_connector
+                name current_time
+                queue_size 1
+              end
+              input_connector
+                name initial_previous_time
+                queue_size 1
+              end
+              input_connector
+                name __shadow_input_4
+                queue_size 1
+              end
+              input_connector
+                name __shadow_input_5
+                queue_size 1
+              end
+              parameters
+              end
+              parameter_references
+                Kp Kp
+                Ki Ki
+                Kd Kd
+              end
+            end
+          end
+          activity_mode direct
+        end
+        activity_state
+          timeout 0
+          title initial time
+          id 732
+          geometry 27.654 403 130.453 60
+          minimum_size 80 60
+          library march_ros
+          description current_time
+          mode direct
+        end
+        initial_state 732
+      end
+      group
+        title control mode
+        id 59
+        geometry 1012.48 426 1081.56 706
+        minimum_size 100 80
+        super_state
+          timeout 0
+          title control mode
+          id 150
+          geometry 10 30 1061.56 666
+          minimum_size 80 40
+          group
+            title control mode
+            id 151
+            geometry 10 30 1041.56 626
+            minimum_size 100 80
+            activity_state
+              timeout 0
+              title idle
+              id 888
+              geometry 10 30 81.2344 40
+              minimum_size 80 40
+              library march_std_lib
+              description output_float64
+              mode direct
+              input_connector
+                name value
+                queue_size 1
+              end
+              parameters
+              end
+              parameter_references
+              end
+            end
+            activity_state
+              timeout 0
+              title velocity control
+              id 936
+              geometry 201.128 424 163.563 42
+              minimum_size 80 42
+              library air_lab1_march
+              description velocity_controller
+              mode direct
+              input_connector
+                name cmd_vel
+                queue_size 1
+              end
+            end
+            activity_state
+              timeout 0
+              title position control
+              id 972
+              geometry 848.696 556 164.281 60
+              minimum_size 80 60
+              library air_lab1_march
+              description reach_point_controller
+              mode direct
+              input_connector
+                name cmd_pose
+                queue_size 1
+              end
+              input_connector
+                name max_velocity
+                queue_size 1
+              end
+              input_connector
+                name current_pose
+                queue_size 1
+              end
+              parameters
+              end
+              parameter_references
+                krho k_rho
+                kalpha k_alpha
+                kbeta k_beta
+              end
+            end
+            activity_state
+              timeout 0
+              title waypoint controller
+              id 980
+              geometry 840.471 495 191.094 60
+              minimum_size 80 60
+              library air_lab1_march
+              description waypoints_controller
+              mode direct
+              input_connector
+                name waypoints
+                queue_size 1
+              end
+              input_connector
+                name max_velocity
+                queue_size 1
+              end
+              input_connector
+                name current_pose
+                queue_size 1
+              end
+              parameters
+              end
+              parameter_references
+                krho k_rho
+                kalpha k_alpha
+                kbeta k_beta
+              end
+            end
+            initial_state 888
+          end
+        end
+        initial_state 150
+      end
+      group
+        title extract wheel velocities
+        id 697
+        geometry 2577.61 30 373.184 236
+        minimum_size 100 80
+        processing_state
+          timeout 0
+          title extract wheel velocities
+          id 698
+          geometry 10 30 353.184 196
+          minimum_size 80 40
+          processing_graph
+            title untitled
+            id 699
+            geometry 0 0 353.184 196
+            minimum_size 80 40
+            processing_node
+              title left wheel
+              id 700
+              geometry 242.841 30 96.4688 42
+              minimum_size 80 42
+              library march_list
+              description list_at
+              mode direct
+              input_connector
+                name list
+                queue_size 1
+              end
+              input_connector
+                name index
+                queue_size 1
+                initial_message
+                  type std_msgs/unsigned_integer64
+                  field data 0
+                end
+              end
+            end
+            processing_node
+              title right wheel
+              id 701
+              geometry 236.512 144 106.672 42
+              minimum_size 80 42
+              library march_list
+              description list_at
+              mode direct
+              input_connector
+                name list
+                queue_size 1
+              end
+              input_connector
+                name index
+                queue_size 1
+                initial_message
+                  type std_msgs/unsigned_integer64
+                  field data 1
+                end
+              end
+            end
+            processing_node
+              title split message
+              id 702
+              geometry 10 57 124.688 96
+              minimum_size 80 96
+              library ros_sensor_msgs_tools
+              description joint_state_dissassemble
+              mode direct
+              input_connector
+                name message
+                queue_size 1
+              end
+            end
+          end
+          activity_mode task
+          task_priority 2
+        end
+        initial_state 698
+      end
+      group
+        title extract position from odometry
+        id 766
+        geometry 10 184 465.942 161
+        minimum_size 100 80
+        processing_state
+          timeout 0
+          title dissassemble odometry message
+          id 767
+          geometry 10 30 445.942 121
+          minimum_size 80 40
+          processing_graph
+            title untitled
+            id 768
+            geometry 0 0 445.942 121
+            minimum_size 80 40
+            processing_node
+              title dissassemble odometry
+              id 769
+              geometry 10 33 194.234 78
+              minimum_size 80 78
+              library ros_nav_msgs_tools
+              description odometry_dissassemble
+              mode direct
+              input_connector
+                name message
+                queue_size 1
+              end
+            end
+            processing_node
+              title dissassemble pose
+              id 770
+              geometry 276.13 30 159.813 42
+              minimum_size 80 42
+              library ros_geometry_msgs_tools
+              description pose_with_covariance_dissassemble
+              mode direct
+              input_connector
+                name message
+                queue_size 1
+              end
+            end
+          end
+          activity_mode task
+          task_priority 2
+        end
+        initial_state 767
+      end
+      group
+        title debugger
+        id 879
+        geometry 2387.47 1007 143.328 80
+        minimum_size 100 80
+        activity_state
+          timeout 0
+          title debugger
+          id 880
+          geometry 10 30 123.328 40
+          minimum_size 80 40
+          library march_debugger_networking
+          description debugger
+          mode direct
+          parameters
+            port 2007
+            process 1 0
+          end
+          parameter_references
+          end
+        end
+        initial_state 880
+      end
+      group
+        title a
+        id 881
+        geometry 2852.47 935 109.625 82
+        minimum_size 100 80
+        activity_state
+          timeout 0
+          title send
+          id 882
+          geometry 10 30 89.625 42
+          minimum_size 80 42
+          library march_debugger
+          description send_message
+          mode direct
+          input_connector
+            name monitor
+            queue_size 1
+          end
+          input_connector
+            name value
+            queue_size 1
+          end
+          parameters
+            name a
+          end
+          parameter_references
+          end
+        end
+        initial_state 882
+      end
+      group
+        title b
+        id 898
+        geometry 2859.18 1060 109.625 82
+        minimum_size 100 80
+        activity_state
+          timeout 0
+          title send
+          id 900
+          geometry 10 30 89.625 42
+          minimum_size 80 42
+          library march_debugger
+          description send_message
+          mode direct
+          input_connector
+            name monitor
+            queue_size 1
+          end
+          input_connector
+            name value
+            queue_size 1
+          end
+          parameters
+          end
+          parameter_references
+          end
+        end
+        initial_state 900
+      end
+      group
+        title c
+        id 899
+        geometry 2860.18 1180 109.625 82
+        minimum_size 100 80
+        activity_state
+          timeout 0
+          title send
+          id 901
+          geometry 10 30 89.625 42
+          minimum_size 80 42
+          library march_debugger
+          description send_message
+          mode direct
+          input_connector
+            name monitor
+            queue_size 1
+          end
+          input_connector
+            name value
+            queue_size 1
+          end
+          parameters
+          end
+          parameter_references
+          end
+        end
+        initial_state 901
+      end
+    end
+    title husky_control
+    connector
+      id 35
+      input
+      external_data_connector_model
+        name wheel_cmd
+        type ros_sensor_msgs/joint_state
+        position 4377.55 593
+      end
+    end
+    connector
+      id 83
+      output
+      external_event_connector_model
+        name to_idle_control
+        position 932.348 450
+      end
+    end
+    connector
+      id 87
+      output
+      external_data_connector_model
+        name wheel_velocities
+        type ros_sensor_msgs/joint_state
+        position 2458.29 115
+      end
+    end
+    connector
+      id 145
+      pass_through
+      pass_through_data_connector_model
+        name linear
+        position 2214.53 624.446
+      end
+    end
+    connector
+      id 205
+      pass_through
+      pass_through_data_connector_model
+        name angular
+        position 2136.18 909
+      end
+    end
+    connector
+      id 258
+      pass_through
+      pass_through_data_connector_model
+        name linear
+        position 2694.96 586
+      end
+    end
+    connector
+      id 259
+      pass_through
+      pass_through_data_connector_model
+        name angular
+        position 2698.62 682
+      end
+    end
+    connector
+      id 674
+      pass_through
+      pass_through_data_connector_model
+        name left
+        position 3261.83 102
+      end
+    end
+    connector
+      id 675
+      pass_through
+      pass_through_data_connector_model
+        name right
+        position 3287.83 248
+      end
+    end
+    connector
+      id 765
+      output
+      external_data_connector_model
+        name odometry
+        type ros_nav_msgs/odometry
+        position 16 276
+      end
+    end
+    connector
+      id 829
+      pass_through
+      pass_through_data_connector_model
+        name position
+        position 1354.55 1198
+      end
+    end
+    connector
+      id 902
+      pass_through
+      pass_through_data_connector_model
+        name msg
+        position 2804.56 963
+      end
+    end
+    connector
+      id 903
+      pass_through
+      pass_through_data_connector_model
+        name msg
+        position 2786.56 1150
+      end
+    end
+    connector
+      id 904
+      pass_through
+      pass_through_data_connector_model
+        name msg
+        position 2783.56 1224
+      end
+    end
+    connector
+      id 941
+      output
+      external_event_connector_model
+        name to_vel_control
+        position 1182.43 857
+      end
+    end
+    connector
+      id 947
+      output
+      external_data_connector_model
+        name cmd_vel
+        type ros_geometry_msgs/twist
+        position 1242 953
+      end
+    end
+    connector
+      id 959
+      output
+      external_data_connector_model
+        name max_velocity
+        type ros_geometry_msgs/twist
+        position 1859 1096
+      end
+    end
+    connector
+      id 961
+      output
+      external_data_connector_model
+        name cmd_position
+        type ros_geometry_msgs/pose_stamped
+        position 1873 1059
+      end
+    end
+    connector
+      id 967
+      output
+      external_event_connector_model
+        name to_position_control
+        position 1448 748
+      end
+    end
+    connector
+      id 981
+      output
+      external_data_connector_model
+        name cmd_waypoints
+        type ros_nav_msgs/path
+        position 1855.78 1029
+      end
+    end
+    connector
+      id 988
+      output
+      external_event_connector_model
+        name to_waypoint_control
+        position 1318.78 700
+      end
+    end
+    connector
+      id 991
+      input
+      external_event_connector_model
+        name waypoints_finished
+        position 2030.55 1220
+      end
+    end
+    connector
+      id 993
+      input
+      external_event_connector_model
+        name point_reached
+        position 2168.55 1219
+      end
+    end
+    connection
+      id 115
+      priority 0
+      transition_connector_model
+        abstract_state 2
+        position 0.308896 0
+      end
+      middle_point -3.01761 -5.3
+      transition_connector_model
+        abstract_state 2
+        position 0.0583172 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 147
+      priority 0
+      attached_data_connector_model
+        activity 888
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.479414 1.02709
+      connector_id 145
+      data_connection_model 0
+    end
+    connection
+      id 153
+      priority 3
+      transition_connector_model
+        abstract_state 150
+        position 0 0.862605
+      end
+      middle_point -16.5176 3.4
+      transition_connector_model
+        abstract_state 150
+        position 0 0.218204
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 154
+      priority 2
+      connector_id 83
+      middle_point 0.462952 0.555505
+      middle_of_connection_id 153
+    end
+    connection
+      id 206
+      priority 0
+      attached_data_connector_model
+        activity 888
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.418982 0.463661
+      connector_id 205
+      data_connection_model 0
+    end
+    connection
+      id 268
+      priority 0
+      connector_id 205
+      middle_point 0.648771 -0.2
+      connector_id 259
+      data_connection_model 0
+    end
+    connection
+      id 358
+      priority 0
+      connector_id 145
+      middle_point 0.641089 0.0908765
+      connector_id 258
+      data_connection_model 0
+    end
+    connection
+      id 678
+      priority 0
+      connector_id 674
+      middle_point 0.0553266 0.00880976
+      middle_of_connection_id 115
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 679
+      priority 0
+      connector_id 675
+      middle_point 0.798818 -0.0100976
+      middle_of_connection_id 115
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 685
+      priority 0
+      attached_data_connector_model
+        activity 684
+        attachment_name value
+        attachment_type std_msgs/string
+      end
+      middle_point 0.037152 0.927273
+      attached_data_connector_model
+        activity 681
+        attachment_name value
+        attachment_type std_msgs/string
+      end
+      data_connection_model 0
+    end
+    connection
+      id 686
+      priority 0
+      attached_data_connector_model
+        activity 681
+        attachment_name list
+        attachment_type std_msgs/stringlist
+      end
+      middle_point -0.0706779 0.8
+      attached_data_connector_model
+        activity 680
+        attachment_name list
+        attachment_type std_msgs/stringlist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 687
+      priority 0
+      attached_data_connector_model
+        activity 680
+        attachment_name list
+        attachment_type std_msgs/stringlist
+      end
+      middle_point -0.36859 0.532745
+      attached_data_connector_model
+        activity 408
+        attachment_name name
+        attachment_type std_msgs/stringlist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 715
+      priority 0
+      connector_id 87
+      middle_point 0.130963 0.655172
+      attached_data_connector_model
+        activity 702
+        attachment_name message
+        attachment_type ros_sensor_msgs/joint_state
+      end
+      data_connection_model 0
+    end
+    connection
+      id 716
+      priority 0
+      attached_data_connector_model
+        activity 702
+        attachment_name velocity
+        attachment_type std_msgs/float64list
+      end
+      middle_point 0.480998 0.4
+      attached_data_connector_model
+        activity 700
+        attachment_name list
+        attachment_type std_msgs/float64list
+      end
+      data_connection_model 0
+    end
+    connection
+      id 717
+      priority 0
+      attached_data_connector_model
+        activity 702
+        attachment_name velocity
+        attachment_type std_msgs/float64list
+      end
+      middle_point 0.520788 0.530303
+      attached_data_connector_model
+        activity 701
+        attachment_name list
+        attachment_type std_msgs/float64list
+      end
+      data_connection_model 0
+    end
+    connection
+      id 718
+      priority 0
+      attached_data_connector_model
+        activity 700
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.799798 0.386492
+      connector_id 674
+      data_connection_model 0
+    end
+    connection
+      id 719
+      priority 0
+      attached_data_connector_model
+        activity 701
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.551939 0.626555
+      connector_id 675
+      data_connection_model 0
+    end
+    connection
+      id 728
+      priority 0
+      attached_data_connector_model
+        activity 690
+        attachment_name list
+        attachment_type std_msgs/float64list
+      end
+      middle_point 0.0836611 0.406977
+      attached_data_connector_model
+        activity 691
+        attachment_name list
+        attachment_type std_msgs/float64list
+      end
+      data_connection_model 0
+    end
+    connection
+      id 729
+      priority 0
+      attached_data_connector_model
+        activity 691
+        attachment_name list
+        attachment_type std_msgs/float64list
+      end
+      middle_point -0.0232602 0.7
+      attached_data_connector_model
+        activity 408
+        attachment_name effort
+        attachment_type std_msgs/float64list
+      end
+      data_connection_model 0
+    end
+    connection
+      id 730
+      priority 0
+      attached_data_connector_model
+        activity 408
+        attachment_name message
+        attachment_type ros_sensor_msgs/joint_state
+      end
+      middle_point 0.596229 0.65625
+      connector_id 35
+      data_connection_model 0
+    end
+    connection
+      id 731
+      priority 0
+      attached_data_connector_model
+        activity 688
+        attachment_name value
+        attachment_type std_msgs/string
+      end
+      middle_point 0.129617 0.7
+      attached_data_connector_model
+        activity 680
+        attachment_name value
+        attachment_type std_msgs/string
+      end
+      data_connection_model 0
+    end
+    connection
+      id 735
+      priority 0
+      transition_connector_model
+        abstract_state 732
+        position 0.563137 0
+      end
+      middle_point -0.214032 0.7
+      transition_connector_model
+        abstract_state 2
+        position 0.119059 1
+      end
+        transition_connection_model
+        events finished
+        guard_expression 
+      end
+    end
+    connection
+      id 762
+      priority 0
+      transition_connector_model
+        abstract_state 698
+        position 0 0.526927
+      end
+      middle_point -6.41761 0.380928
+      transition_connector_model
+        abstract_state 698
+        position 0 0.944444
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 763
+      priority 0
+      connector_id 87
+      middle_point 0.79119 0.0271986
+      middle_of_connection_id 762
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 772
+      priority 0
+      connector_id 765
+      middle_point 0.0702726 0.611801
+      attached_data_connector_model
+        activity 769
+        attachment_name message
+        attachment_type ros_nav_msgs/odometry
+      end
+      data_connection_model 0
+    end
+    connection
+      id 773
+      priority 0
+      transition_connector_model
+        abstract_state 767
+        position 0.0354998 0
+      end
+      middle_point 0.130722 -4.7
+      transition_connector_model
+        abstract_state 767
+        position 0.196405 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 774
+      priority 0
+      connector_id 765
+      middle_point 0.471394 -0.316664
+      middle_of_connection_id 773
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 775
+      priority 0
+      attached_data_connector_model
+        activity 769
+        attachment_name pose
+        attachment_type ros_geometry_msgs/pose_with_covariance
+      end
+      middle_point 0.285785 0.9
+      attached_data_connector_model
+        activity 770
+        attachment_name message
+        attachment_type ros_geometry_msgs/pose_with_covariance
+      end
+      data_connection_model 0
+    end
+    connection
+      id 830
+      priority 0
+      attached_data_connector_model
+        activity 770
+        attachment_name pose
+        attachment_type ros_geometry_msgs/pose
+      end
+      middle_point 0.0272588 0.569258
+      connector_id 829
+      data_connection_model 0
+    end
+    connection
+      id 883
+      priority 0
+      attached_data_connector_model
+        activity 880
+        attachment_name monitor
+        attachment_type debugger_msgs/monitor
+      end
+      middle_point 0.66881 1.4
+      attached_data_connector_model
+        activity 882
+        attachment_name monitor
+        attachment_type debugger_msgs/monitor
+      end
+      data_connection_model 0
+    end
+    connection
+      id 905
+      priority 0
+      transition_connector_model
+        abstract_state 882
+        position 0.219292 0
+      end
+      middle_point 0.54878 -4.5
+      transition_connector_model
+        abstract_state 882
+        position 0.686029 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 906
+      priority 0
+      transition_connector_model
+        abstract_state 900
+        position 0.268229 0
+      end
+      middle_point 0.527778 -4.6
+      transition_connector_model
+        abstract_state 900
+        position 0.678048 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 907
+      priority 0
+      transition_connector_model
+        abstract_state 901
+        position 0.199926 0
+      end
+      middle_point 0.625 -3.8
+      transition_connector_model
+        abstract_state 901
+        position 0.746351 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 908
+      priority 0
+      attached_data_connector_model
+        activity 880
+        attachment_name monitor
+        attachment_type debugger_msgs/monitor
+      end
+      middle_point 0.66645 0.754717
+      attached_data_connector_model
+        activity 900
+        attachment_name monitor
+        attachment_type debugger_msgs/monitor
+      end
+      data_connection_model 0
+    end
+    connection
+      id 909
+      priority 0
+      attached_data_connector_model
+        activity 880
+        attachment_name monitor
+        attachment_type debugger_msgs/monitor
+      end
+      middle_point 0.666867 0.560556
+      attached_data_connector_model
+        activity 901
+        attachment_name monitor
+        attachment_type debugger_msgs/monitor
+      end
+      data_connection_model 0
+    end
+    connection
+      id 910
+      priority 0
+      connector_id 904
+      middle_point 0.817753 0.454545
+      attached_data_connector_model
+        activity 901
+        attachment_name value
+        attachment_type std_msgs/empty
+      end
+      data_connection_model 0
+    end
+    connection
+      id 911
+      priority 0
+      connector_id 903
+      middle_point 0.720907 0.5
+      attached_data_connector_model
+        activity 900
+        attachment_name value
+        attachment_type std_msgs/empty
+      end
+      data_connection_model 0
+    end
+    connection
+      id 912
+      priority 0
+      connector_id 902
+      middle_point 0.716233 0.194444
+      attached_data_connector_model
+        activity 882
+        attachment_name value
+        attachment_type std_msgs/empty
+      end
+      data_connection_model 0
+    end
+    connection
+      id 913
+      priority 0
+      connector_id 902
+      middle_point 0.5 0.5
+      middle_of_connection_id 905
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 914
+      priority 0
+      connector_id 903
+      middle_point 0.515228 -0.9
+      middle_of_connection_id 906
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 915
+      priority 0
+      connector_id 904
+      middle_point 0.690429 -0.2
+      middle_of_connection_id 907
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 923
+      priority 0
+      attached_data_connector_model
+        activity 732
+        attachment_name t
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.576951 0.6
+      attached_data_connector_model
+        activity 916
+        attachment_name initial_previous_time
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 924
+      priority 0
+      attached_data_connector_model
+        activity 732
+        attachment_name t
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.4
+      attached_data_connector_model
+        activity 919
+        attachment_name initial_previous_time
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 925
+      priority 0
+      attached_data_connector_model
+        activity 918
+        attachment_name t
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 919
+        attachment_name current_time
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 926
+      priority 0
+      attached_data_connector_model
+        activity 917
+        attachment_name left_velocity
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.363093 6.2
+      attached_data_connector_model
+        activity 919
+        attachment_name control
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 928
+      priority 0
+      attached_data_connector_model
+        activity 918
+        attachment_name t
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.562428 0.548387
+      attached_data_connector_model
+        activity 916
+        attachment_name current_time
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 929
+      priority 0
+      attached_data_connector_model
+        activity 701
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.157198 0.504938
+      attached_data_connector_model
+        activity 916
+        attachment_name observation
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 930
+      priority 0
+      attached_data_connector_model
+        activity 700
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.372369 0.4925
+      attached_data_connector_model
+        activity 919
+        attachment_name observation
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 931
+      priority 0
+      attached_data_connector_model
+        activity 917
+        attachment_name right_velocity
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.439813 0.7
+      attached_data_connector_model
+        activity 916
+        attachment_name control
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 932
+      priority 0
+      connector_id 259
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 917
+        attachment_name angular_velocity
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 933
+      priority 0
+      connector_id 258
+      middle_point 0.623529 0.182243
+      attached_data_connector_model
+        activity 917
+        attachment_name linear_velocity
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 934
+      priority 0
+      attached_data_connector_model
+        activity 916
+        attachment_name output
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.0680727 0.572165
+      attached_data_connector_model
+        activity 691
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 935
+      priority 0
+      attached_data_connector_model
+        activity 919
+        attachment_name output
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 690
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 937
+      priority 1
+      transition_connector_model
+        abstract_state 888
+        position 0.72787 1
+      end
+      middle_point 0.5 0.5
+      transition_connector_model
+        abstract_state 936
+        position 0.281238 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 938
+      priority 0
+      transition_connector_model
+        abstract_state 0
+        position 0 0.429141
+      end
+      middle_point 0.5 0.5
+      transition_connector_model
+        abstract_state 0
+        position 0 0.429141
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 943
+      priority 2
+      connector_id 941
+      middle_point 0.5 0.5
+      middle_of_connection_id 153
+    end
+    connection
+      id 944
+      priority 0
+      connector_id 941
+      middle_point 0.5 0.5
+      middle_of_connection_id 937
+    end
+    connection
+      id 949
+      priority 0
+      connector_id 947
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 936
+        attachment_name cmd_vel
+        attachment_type ros_geometry_msgs/twist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 950
+      priority 0
+      attached_data_connector_model
+        activity 936
+        attachment_name linear
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.285585 -9.8
+      connector_id 145
+      data_connection_model 0
+    end
+    connection
+      id 951
+      priority 0
+      attached_data_connector_model
+        activity 936
+        attachment_name angular
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.709986 3.6
+      connector_id 205
+      data_connection_model 0
+    end
+    connection
+      id 969
+      priority 2
+      connector_id 967
+      middle_point 5.1 0.737304
+      middle_of_connection_id 153
+    end
+    connection
+      id 973
+      priority 0
+      connector_id 961
+      middle_point 0.489247 0.46
+      attached_data_connector_model
+        activity 972
+        attachment_name cmd_pose
+        attachment_type ros_geometry_msgs/pose_stamped
+      end
+      data_connection_model 0
+    end
+    connection
+      id 974
+      priority 0
+      connector_id 959
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 972
+        attachment_name max_velocity
+        attachment_type ros_geometry_msgs/twist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 975
+      priority 0
+      connector_id 829
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 972
+        attachment_name current_pose
+        attachment_type ros_geometry_msgs/pose
+      end
+      data_connection_model 0
+    end
+    connection
+      id 976
+      priority 0
+      attached_data_connector_model
+        activity 972
+        attachment_name vel_angular
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 205
+      data_connection_model 0
+    end
+    connection
+      id 977
+      priority 0
+      attached_data_connector_model
+        activity 972
+        attachment_name vel_linear
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 145
+      data_connection_model 0
+    end
+    connection
+      id 978
+      priority 0
+      transition_connector_model
+        abstract_state 888
+        position 0.673794 0
+      end
+      middle_point 0.5 0.5
+      transition_connector_model
+        abstract_state 972
+        position 0.963477 1
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 979
+      priority 0
+      connector_id 967
+      middle_point 0.5 0.5
+      middle_of_connection_id 978
+    end
+    connection
+      id 982
+      priority 0
+      connector_id 981
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 980
+        attachment_name waypoints
+        attachment_type ros_nav_msgs/path
+      end
+      data_connection_model 0
+    end
+    connection
+      id 983
+      priority 0
+      connector_id 959
+      middle_point 0.358264 1.8
+      attached_data_connector_model
+        activity 980
+        attachment_name max_velocity
+        attachment_type ros_geometry_msgs/twist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 984
+      priority 0
+      connector_id 829
+      middle_point 0.962514 1.4
+      attached_data_connector_model
+        activity 980
+        attachment_name current_pose
+        attachment_type ros_geometry_msgs/pose
+      end
+      data_connection_model 0
+    end
+    connection
+      id 985
+      priority 0
+      attached_data_connector_model
+        activity 980
+        attachment_name angular
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 205
+      data_connection_model 0
+    end
+    connection
+      id 986
+      priority 0
+      attached_data_connector_model
+        activity 980
+        attachment_name linear
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.652297 0.3
+      connector_id 145
+      data_connection_model 0
+    end
+    connection
+      id 987
+      priority 0
+      transition_connector_model
+        abstract_state 888
+        position 0.338173 0
+      end
+      middle_point 0.465986 0.435484
+      transition_connector_model
+        abstract_state 980
+        position 0.41341 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 989
+      priority 0
+      connector_id 988
+      middle_point 0.5 0.5
+      middle_of_connection_id 987
+    end
+    connection
+      id 990
+      priority 2
+      connector_id 988
+      middle_point 1.9 0.156965
+      middle_of_connection_id 153
+    end
+    connection
+      id 992
+      priority 0
+      attached_event_connector_model
+        activity 980
+        attachment_name waypoints_finished
+      end
+      middle_point 0.5 0.5
+      connector_id 991
+    end
+    connection
+      id 994
+      priority 0
+      attached_event_connector_model
+        activity 972
+        attachment_name point_reached
+      end
+      middle_point 0.5 0.5
+      connector_id 993
+    end
+    parameter float64 Kp 3
+    parameter float64 Ki 0.1
+    parameter float64 Kd 0.1
+    parameter float64 k_rho 3
+    parameter float64 k_alpha 8
+    parameter float64 k_beta -1.5
+    schedule_slot
+      duration 1000000
+    end
+    schedule_slot
+      duration 1
+      name debugger
+      periodicity 1
+    end
+  end
+end

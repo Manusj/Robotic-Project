@@ -1,0 +1,25 @@
+{
+
+"children": [
+
+{ "name": "drive-to", "params": { "p": { "rostype": "Point", "x": 10, "y": 2, "z": 0
+
+},
+
+"use-motion-planner": false
+
+}
+
+}, {
+
+"children": [
+
+{ "name": "explore", "params": { "radius": 0 } }, { "name": "record", "params": { "filename": "explore.bag", "topics": "/husky0/lidar" } }
+
+], "name": "conc"
+
+}
+
+], "name": "seq"
+
+}
